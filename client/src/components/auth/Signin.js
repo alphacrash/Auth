@@ -4,11 +4,11 @@ import { compose } from "redux";
 import { reduxForm, Field } from "redux-form";
 import * as actions from "../../actions";
 
-function Signup(props) {
+function Signin(props) {
   let navigate = useNavigate();
 
   const onSubmit = (formProps) => {
-    props.signup(formProps, () => {
+    props.signin(formProps, () => {
       navigate("/feature");
     });
   };
@@ -29,7 +29,7 @@ function Signup(props) {
         />
       </fieldset>
       <div>{props.errorMessage}</div>
-      <button>Sign Up!</button>
+      <button>Sign In</button>
     </form>
   );
 }
@@ -40,5 +40,5 @@ function mapStateToProps(state) {
 
 export default compose(
   connect(mapStateToProps, actions),
-  reduxForm({ form: "signup" })
-)(Signup);
+  reduxForm({ form: "signin" })
+)(Signin);

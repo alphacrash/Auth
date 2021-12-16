@@ -17,6 +17,7 @@ const localLogin = new LocalStrategy(localOptions, function (
 ) {
   User.findOne({ email: email }, function (err, user) {
     if (err) {
+      console.log("Error: User.findOne: ", err);
       return done(err);
     }
 
@@ -26,13 +27,15 @@ const localLogin = new LocalStrategy(localOptions, function (
 
     user.comparePassword(password, function (err, isMatch) {
       if (err) {
+        console.log("Error: comparePassword: ", err);
         return done(err);
       }
       if (!isMatch) {
+        console.log("Not a Match: ", err);
         return done(null, false);
       }
 
-      return done(null, false);
+      return done(null, true);
     });
   });
 });
